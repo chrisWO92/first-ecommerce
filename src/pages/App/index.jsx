@@ -7,6 +7,7 @@ import NotFound from '../NotFound'
 import SignIn from '../SignIn'
 import Navbar from '../../components/Navbar'
 import './App.css'
+import { EcommerceProvider } from '../../context'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -23,10 +24,12 @@ const AppRoutes = () => {
 function App() {
 
   return (
-    <BrowserRouter>
-      <Navbar />
-      <AppRoutes />
-    </BrowserRouter>
+    <EcommerceProvider>
+      <BrowserRouter>
+        <Navbar />
+        <AppRoutes />
+      </BrowserRouter>
+    </EcommerceProvider>
   )
 }
 

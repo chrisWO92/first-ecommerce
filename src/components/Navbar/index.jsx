@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { EcommerceContext } from '../../context'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+
 
 const Navbar = () => {
-
+    const {count, setCount} = useContext(EcommerceContext)
     const activeStyle = 'underline underline-offset-4'
 
     return (
@@ -93,8 +96,9 @@ const Navbar = () => {
                         Sing In
                     </NavLink>
                 </li>
-                <li>
-                    emoji
+                <li className='flex gap-1'>
+                    <AiOutlineShoppingCart />
+                    {count}
                 </li>
             </ul>
         </nav>
