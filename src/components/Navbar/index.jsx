@@ -5,7 +5,9 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 
 const Navbar = () => {
-    const {count, setCount} = useContext(EcommerceContext)
+    const {states, stateUpdaters} = useContext(EcommerceContext)
+    const {count, detailOpen} = states
+    const {setCount, setDetailOpen} = stateUpdaters
     const activeStyle = 'underline underline-offset-4'
 
     return (
@@ -96,8 +98,8 @@ const Navbar = () => {
                         Sing In
                     </NavLink>
                 </li>
-                <li className='flex gap-1'>
-                    <AiOutlineShoppingCart />
+                <li className='flex gap-1 items-center'>
+                    <AiOutlineShoppingCart className='h-5 w-5' />
                     {count}
                 </li>
             </ul>
