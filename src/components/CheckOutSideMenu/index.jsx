@@ -40,7 +40,7 @@ const CheckOutSideMenu = () => {
                     onClick={closeCheckOutMenu}
                 ></AiOutlineClose>
             </div>
-            <div className='p-6'>
+            <div className='p-6 overflow-y-scroll'>
                 {
                     cart.map((product) => (
                         <OrderCard

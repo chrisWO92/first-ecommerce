@@ -20,7 +20,7 @@ const Home = () => {
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {
           products?.map((product) => (
-            <Card key={product.id} title={product.title} category={product.category} img={product.image} price={product.price}/>
+            <Card key={product.id} id={product.id} title={product.title} category={product.category} img={product.image} price={product.price}/>
           ))
         }
       </div>
