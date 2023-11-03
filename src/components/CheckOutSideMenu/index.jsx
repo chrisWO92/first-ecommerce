@@ -3,6 +3,7 @@ import './style.css'
 import { EcommerceContext } from '../../context'
 import { AiOutlineClose } from 'react-icons/ai'
 import OrderCard from '../OrderCard'
+import { totalPrice } from '../../utils'
 
 const CheckOutSideMenu = () => {
     const { states, stateUpdaters } = useContext(EcommerceContext)
@@ -29,7 +30,10 @@ const CheckOutSideMenu = () => {
 
 
 
-    console.log(cart)
+    const handleDelete = (id) => {
+        const filteredCart = cart.filter(product => product.id != id)
+        setCart(filteredCart)
+    }
 
     return (
         <aside className={`${checkoutMenuOpen ? "flex" : "hidden"} checkout flex-col fixed right-0 border border-black rounded-lg bg-white`}>
@@ -45,13 +49,19 @@ const CheckOutSideMenu = () => {
                     cart.map((product) => (
                         <OrderCard
                             key={product.id}
+                            id={product.id}
                             title={product.title}
                             imageURL={product.img}
                             price={product.price}
-                        />
+                            handleDelete={handleDelete}
+                        /> 
                     ))
                 }
-            </div>
+            </div>   
+            <div className='p-6 flex justify-end items-center mr-10'>
+                <span className='font-ligth mr-4 text-lg'>Total</span>
+                <span className='font-medium text-xl'>{totalPrice(cart)}</span>
+            </div>         
         </aside>
     )
 }
