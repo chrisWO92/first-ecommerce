@@ -4,6 +4,7 @@ import { EcommerceContext } from '../../context'
 import { AiOutlineClose } from 'react-icons/ai'
 import OrderCard from '../OrderCard'
 import { totalPrice } from '../../utils'
+import { Link } from 'react-router-dom'
 
 const CheckOutSideMenu = () => {
     const { states, stateUpdaters } = useContext(EcommerceContext)
@@ -13,7 +14,8 @@ const CheckOutSideMenu = () => {
         detailOpen,
         detailInfo,
         cart,
-        checkoutMenuOpen
+        checkoutMenuOpen,
+        order
     } = states
 
     const {
@@ -25,7 +27,8 @@ const CheckOutSideMenu = () => {
         setCart,
         setCheckoutMenuOpen,
         openCheckOutMenu,
-        closeCheckOutMenu
+        closeCheckOutMenu,
+        setOrder
     } = stateUpdaters
 
 
@@ -33,6 +36,18 @@ const CheckOutSideMenu = () => {
     const handleDelete = (id) => {
         const filteredCart = cart.filter(product => product.id != id)
         setCart(filteredCart)
+    }
+
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: 'today',
+            products: cart,
+            totalProducts: cart.length,
+            totalPrice: totalPrice(cart)
+        }
+        setOrder([...order, orderToAdd])
+        setCart([])
+        closeCheckOutMenu()
     }
 
     return (
@@ -54,14 +69,22 @@ const CheckOutSideMenu = () => {
                             imageURL={product.img}
                             price={product.price}
                             handleDelete={handleDelete}
-                        /> 
+                        />
                     ))
                 }
-            </div>   
+            </div>
             <div className='p-6 flex justify-end items-center mr-10'>
                 <span className='font-ligth mr-4 text-lg'>Total</span>
                 <span className='font-medium text-xl'>{totalPrice(cart)}</span>
-            </div>         
+            </div>
+            <Link to='/my-order/last'>
+                <button
+                    className='bg-black text-white rounded-lg py-3 mx-4 w-10/12'
+                    onClick={() => handleCheckout()}
+                >
+                    Checkout
+                </button>
+            </Link>
         </aside>
     )
 }

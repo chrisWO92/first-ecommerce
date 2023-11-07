@@ -2,8 +2,18 @@ import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const OrderCard = props => {
-    const {id, title, imageURL, price, handleDelete} = props
+    const { id, title, imageURL, price, handleDelete } = props
     const titleSlice = title.slice(0, 15)
+
+    let renderXIcon
+
+    if (handleDelete) {
+        renderXIcon = <AiOutlineClose
+            onClick={() => handleDelete(id)}
+            className='h-5 w-2/5 cursor-pointer'
+        ></AiOutlineClose>
+    }
+
     return (
         <div className='flex justify-between items-center mb-2 rounded-lg'>
             <div className='flex items-center gap-2 w-7/12'>
@@ -14,10 +24,7 @@ const OrderCard = props => {
             </div>
             <div className='flex items-center justify-center gap-0 w-5/12 p-1'>
                 <p className='text-lg font-medium w-3/5 flex justify-end'>${price}</p>
-                <AiOutlineClose
-                    onClick={() => handleDelete(id)}
-                    className='h-5 w-2/5 cursor-pointer'
-                ></AiOutlineClose>
+                {renderXIcon}
             </div>
         </div>
     )

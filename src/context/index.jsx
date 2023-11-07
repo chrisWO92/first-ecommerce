@@ -22,12 +22,16 @@ export const EcommerceProvider = ({ children }) => {
     const openCheckOutMenu = () => setCheckoutMenuOpen(true)
     const closeCheckOutMenu = () => setCheckoutMenuOpen(false)
 
+    //Checkout - Adding order
+    const [order, setOrder] = useState([])
+
     const states = {
         count, 
         detailOpen, 
         detailInfo, 
         cart,
-        checkoutMenuOpen
+        checkoutMenuOpen,
+        order
     }
 
     const stateUpdaters = {
@@ -39,7 +43,8 @@ export const EcommerceProvider = ({ children }) => {
         setCart, 
         setCheckoutMenuOpen, 
         openCheckOutMenu, 
-        closeCheckOutMenu
+        closeCheckOutMenu,
+        setOrder
     }
 
     const value = {
