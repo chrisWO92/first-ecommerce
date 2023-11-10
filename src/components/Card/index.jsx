@@ -4,10 +4,9 @@ import {GrAdd} from 'react-icons/gr'
 import {AiOutlineCheck} from 'react-icons/ai'
 
 const Card = props => {
-  console.log(props)
+
   const { title, category, img, price, id } = props
   const { states, stateUpdaters } = useContext(EcommerceContext)
-  console.log(title)
 
   const {
     count,
@@ -31,7 +30,6 @@ const Card = props => {
 
   const showProduct = () => {
     setDetailInfo(props)
-    console.log(detailInfo)
     openProductDetail()
   }
 
@@ -41,7 +39,6 @@ const Card = props => {
     setCart([...cart, { title, category, img, price, id }])
     openCheckOutMenu()
     closeProductDetail()
-    //console.log(cart)
   }
 
   const renderIcon = (id) => {
@@ -50,7 +47,6 @@ const Card = props => {
       return (
         <div
             className='absolute top-0 right-0 flex justify-center items-center bg-black text-white w-6 h-6 rounded-full m-2'
-            //onClick={(e) => addingProduct(e)}
           ><AiOutlineCheck /></div>
       )
     } else {

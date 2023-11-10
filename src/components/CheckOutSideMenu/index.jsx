@@ -6,6 +6,7 @@ import OrderCard from '../OrderCard'
 import { totalPrice } from '../../utils'
 import { Link } from 'react-router-dom'
 
+
 const CheckOutSideMenu = () => {
     const { states, stateUpdaters } = useContext(EcommerceContext)
 
@@ -39,12 +40,13 @@ const CheckOutSideMenu = () => {
     }
 
     const handleCheckout = () => {
+
         const orderToAdd = {
-            date: 'today',
             products: cart,
             totalProducts: cart.length,
             totalPrice: totalPrice(cart)
         }
+
         setOrder([...order, orderToAdd])
         setCart([])
         closeCheckOutMenu()

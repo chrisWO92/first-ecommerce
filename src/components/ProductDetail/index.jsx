@@ -4,13 +4,14 @@ import { EcommerceContext } from '../../context'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const ProductDetail = () => {
+    
     const { states, stateUpdaters } = useContext(EcommerceContext)
     const { 
         count, 
         detailOpen, 
         detailInfo,
     } = states
-    console.log(detailInfo.img)
+
     const { setCount, setDetailOpen, openProductDetail, closeProductDetail } = stateUpdaters
     return (
         <aside className={`${detailOpen ? "flex" : "hidden"} detail flex-col fixed right-0 border border-black rounded-lg bg-white`}>

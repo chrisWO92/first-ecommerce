@@ -11,12 +11,11 @@ const Home = () => {
       .then(response => response.json())
       .then(response => {
         setProducts(response)
-        console.log(response)
       })
   }, [])
   return (
     <Layout>
-      Home
+      <h1 className='font-medium text-xl mb-6'>Products</h1>
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {
           products?.map((product) => (
