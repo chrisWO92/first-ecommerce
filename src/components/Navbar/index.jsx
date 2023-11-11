@@ -6,7 +6,7 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 const Navbar = () => {
     const {states, stateUpdaters} = useContext(EcommerceContext)
-    const {count, detailOpen} = states
+    const {count, detailOpen, setSearchValue} = states
     const {setCount, setDetailOpen} = stateUpdaters
     const activeStyle = 'underline underline-offset-4'
 
@@ -17,6 +17,7 @@ const Navbar = () => {
                     <NavLink
                         to='/'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
+                        onClick={() => setSearchValue('')}
                     >
                         Shopi
                     </NavLink>
@@ -25,48 +26,45 @@ const Navbar = () => {
                     <NavLink
                         to='/'
                         className={({ isActive}) => isActive ? `h-full ${activeStyle}` : `h-full`}
+                        onClick={() => setSearchValue('')}
                     >
                         All
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to='/clothes'
-                        className={({ isActive}) => isActive ? `h-full ${activeStyle}` : `h-full`}
-                    >
-                        Clothes
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
                         to='/electronics'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
+                        onClick={() => setSearchValue('')}
                     >
                         Electronics
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to='/furnitures'
+                        to='/jewelery'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
+                        onClick={() => setSearchValue('')}
                     >
-                        Furnitures
+                        Jewelery
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to='/toys'
-                        className={({ isActive}) => isActive ? activeStyle : undefined}
+                        to='/men-clothing'
+                        className={({ isActive}) => isActive ? `h-full ${activeStyle}` : `h-full`}
+                        onClick={() => setSearchValue('')}
                     >
-                        Toys
+                        Men's Clothing
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to='/others'
+                        to='/women-clothing'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
+                        onClick={() => setSearchValue('')}
                     >
-                        Others
+                        Women's clothing
                     </NavLink>
                 </li>
             </ul>
