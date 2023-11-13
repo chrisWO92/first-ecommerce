@@ -6,9 +6,14 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 const Navbar = () => {
     const {states, stateUpdaters} = useContext(EcommerceContext)
-    const {count, detailOpen, setSearchValue} = states
-    const {setCount, setDetailOpen} = stateUpdaters
+    const {count, detailOpen, cart} = states
+    const {setCount, setDetailOpen, setSearchValue} = stateUpdaters
     const activeStyle = 'underline underline-offset-4'
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        setSearchValue('')
+    }
 
     return (
         <nav className='flex justify-between items-center w-full py-5 px-8 text-sm font-light'>
@@ -17,7 +22,7 @@ const Navbar = () => {
                     <NavLink
                         to='/'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
-                        onClick={() => setSearchValue('')}
+                        //onClick={handleClick}
                     >
                         Shopi
                     </NavLink>
@@ -26,7 +31,7 @@ const Navbar = () => {
                     <NavLink
                         to='/'
                         className={({ isActive}) => isActive ? `h-full ${activeStyle}` : `h-full`}
-                        onClick={() => setSearchValue('')}
+                        //onClick={(e) => handleClick(e)}
                     >
                         All
                     </NavLink>
@@ -35,7 +40,7 @@ const Navbar = () => {
                     <NavLink
                         to='/electronics'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
-                        onClick={() => setSearchValue('')}
+                        //onClick={handleClick}
                     >
                         Electronics
                     </NavLink>
@@ -44,7 +49,7 @@ const Navbar = () => {
                     <NavLink
                         to='/jewelery'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
-                        onClick={() => setSearchValue('')}
+                        //onClick={(e) => handleClick(e)}
                     >
                         Jewelery
                     </NavLink>
@@ -53,7 +58,7 @@ const Navbar = () => {
                     <NavLink
                         to='/men-clothing'
                         className={({ isActive}) => isActive ? `h-full ${activeStyle}` : `h-full`}
-                        onClick={() => setSearchValue('')}
+                        //onClick={(e) => handleClick(e)}
                     >
                         Men's Clothing
                     </NavLink>
@@ -62,7 +67,7 @@ const Navbar = () => {
                     <NavLink
                         to='/women-clothing'
                         className={({ isActive}) => isActive ? activeStyle : undefined}
-                        onClick={() => setSearchValue('')}
+                        //onClick={(e) => handleClick(e)}
                     >
                         Women's clothing
                     </NavLink>
@@ -98,7 +103,7 @@ const Navbar = () => {
                 </li>
                 <li className='flex gap-1 items-center'>
                     <AiOutlineShoppingCart className='h-5 w-5' />
-                    {count}
+                    {cart.length}
                 </li>
             </ul>
         </nav>

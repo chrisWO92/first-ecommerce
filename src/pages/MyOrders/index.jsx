@@ -29,8 +29,6 @@ const MyOrders = () => {
     setOrder
   } = stateUpdaters
 
-  //console.log(order?.slice(-1))
-
   return (
     <Layout>
       <p className='font-medium text-xl mb-6'>My Orders</p>      

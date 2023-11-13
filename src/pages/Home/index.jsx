@@ -39,9 +39,14 @@ const Home = () => {
     setLoading
   } = stateUpdaters
 
+  //setSearchValue('')
   const currentPath = window.location.pathname
   const param = currentPath.slice(currentPath.lastIndexOf('/') + 1, currentPath.length)
   setSearchValueCategory(param)
+
+  useEffect(() => {
+    setSearchValue('')
+  }, [searchValueCategory])
 
   let searchedProductsByCategory = filterByCategory(searchValueCategory)
   let searchedProductsByTitle = filter(searchedProductsByCategory, searchValue)
@@ -68,7 +73,7 @@ const Home = () => {
         <div className='font-medium text-lg'>Loading ...</div>
       )
     }
-    
+
   }
 
   return (
@@ -78,6 +83,7 @@ const Home = () => {
         type="text"
         className='mb-6 p-4 rounded-lg border border-black focus:outline-none w-80'
         onChange={(e) => setSearchValue(e.target.value)}
+        value={searchValue}
       />
       {renderFunc()}
       {/* <div className='font-medium text-lg'>Sorry, we don't have any products for this keyword</div>
